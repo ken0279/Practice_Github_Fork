@@ -1,0 +1,6 @@
+Japanese_name,Scientific_name,No_assembly_of_the_species,represent_assembly,Genome_size_of_the_species_Mbp,represent_assembly_status,Contig_N50,Scaffold_N50
+シロイヌナズナ,Arabidopsis thaliana,20,GCA_028009825.1,133,Complete Genome,26149336,26149336
+ニホンウナギ,Anguilla japonica Temminck & Schlegel 1846,7,GCA_025169545.1,1029,Chromosome,21484275,58706456
+マアナゴ,Conger myriaster (Brevoort 1856),0,NA,NA,NA,NA,NA
+ハモ,Muraenesox cinereus (Forsskål 1775),0,NA,NA,NA,NA,NA
+イラコアナゴ,Synaphobranchus kaupii Johnson 1862,1,GCA_029718625.1,1503,Chromosome,519789,76846976

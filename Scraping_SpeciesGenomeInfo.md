@@ -1,20 +1,23 @@
----
-title: "Scraping_SpeciesGenomeInfo"
-author: "Akira Hirao"
-date: "`r Sys.Date()`"
-output:
-  md_document:
-    toc: true
-    variant: markdown_github
-  html_document:
-    toc: true
----
+-   <a href="#scraping-genome-assembly-information-on-ncbi-database"
+    id="toc-scraping-genome-assembly-information-on-ncbi-database">Scraping
+    genome assembly information on NCBI database</a>
+    -   <a href="#loading-the-packages" id="toc-loading-the-packages">Loading
+        the packages</a>
+    -   <a href="#loading-dataset" id="toc-loading-dataset">Loading dataset</a>
+    -   <a href="#defining-scraping-function"
+        id="toc-defining-scraping-function">Defining scraping function</a>
+    -   <a href="#preparing-storages" id="toc-preparing-storages">Preparing
+        storages</a>
+    -   <a href="#scraping-on-ncbi-databae"
+        id="toc-scraping-on-ncbi-databae">Scraping on NCBI databae</a>
+    -   <a href="#write-a-result-file" id="toc-write-a-result-file">Write a
+        result file</a>
 
 # Scraping genome assembly information on NCBI database
 
 ## Loading the packages
 
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+``` r
 # Loading packages
 library(tidyverse)
 library(rentrez)
@@ -22,8 +25,7 @@ library(rentrez)
 
 ## Loading dataset
 
-```{r message = FALSE, warning = FALSE, echo = TRUE}
-
+``` r
 species_files <- list.files(pattern = "\\.list\\.csv$")
 species_files_list <- lapply(species_files, read_csv)
 species <- do.call(rbind,species_files_list)
@@ -37,7 +39,7 @@ no_species <- nrow(species) #number of fishes in the list
 
 ## Defining scraping function
 
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+``` r
 #https://bioconnector.github.io/workshops/r-ncbi.html#introduction
 #https://pediatricsurgery.hatenadiary.jp/entry/2018/01/10/205737
 #entrez_db_searchable(db ="genome")
@@ -124,7 +126,7 @@ genome_info_sp_NCBI <- function(scientific_name){
 
 ## Preparing storages
 
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+``` r
 scientific_name_vec <- vector()
 japanese_name_vec <- vector()
 target_sp_genome_assembly_exist <- vector()
@@ -138,15 +140,11 @@ represent_assembly_status_vec <- vector()
 represent_contigN50_vec <- vector()
 represent_scaffoldN50_vec <- vector()
 represent_genome_size_Mbp_vec <- vector()
-
 ```
-
-
 
 ## Scraping on NCBI databae
 
-```{r message = FALSE, warning = FALSE, echo = TRUE}
-
+``` r
 for(i in 1:no_species){
   # split genus/species names
   japanese_name <- species[i,]$Japanese_name 
@@ -192,8 +190,7 @@ species_genome <- data.frame(Japanese_name=japanese_name_vec,
 ```
 
 ## Write a result file
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+
+``` r
 write_csv(species_genome, "output.csv")
 ```
-
-

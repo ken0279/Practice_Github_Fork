@@ -1,28 +1,10 @@
----
-title: "Scraping_SpeciesGenomeInfo"
-author: "Akira Hirao"
-date: "`r Sys.Date()`"
-output:
-  md_document:
-    toc: true
-    variant: markdown_github
-  html_document:
-    toc: true
----
-
-# Scraping genome assembly information on NCBI database
-
-## Loading the packages
-
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+## ----message = FALSE, warning = FALSE, echo = TRUE------------------------------------------------
 # Loading packages
 library(tidyverse)
 library(rentrez)
-```
 
-## Loading dataset
 
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+## ----message = FALSE, warning = FALSE, echo = TRUE------------------------------------------------
 
 species_files <- list.files(pattern = "\\.list\\.csv$")
 species_files_list <- lapply(species_files, read_csv)
@@ -33,11 +15,9 @@ no_species <- nrow(species) #number of fishes in the list
 #Set a small dataset for test procedure
 #no_species <- 20 # for test
 #species <- species[1:no_species,]
-```
 
-## Defining scraping function
 
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+## ----message = FALSE, warning = FALSE, echo = TRUE------------------------------------------------
 #https://bioconnector.github.io/workshops/r-ncbi.html#introduction
 #https://pediatricsurgery.hatenadiary.jp/entry/2018/01/10/205737
 #entrez_db_searchable(db ="genome")
@@ -120,11 +100,9 @@ genome_info_sp_NCBI <- function(scientific_name){
 }
 
 #-------------------------------------------------------------------------
-```
 
-## Preparing storages
 
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+## ----message = FALSE, warning = FALSE, echo = TRUE------------------------------------------------
 scientific_name_vec <- vector()
 japanese_name_vec <- vector()
 target_sp_genome_assembly_exist <- vector()
@@ -139,13 +117,9 @@ represent_contigN50_vec <- vector()
 represent_scaffoldN50_vec <- vector()
 represent_genome_size_Mbp_vec <- vector()
 
-```
 
 
-
-## Scraping on NCBI databae
-
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+## ----message = FALSE, warning = FALSE, echo = TRUE------------------------------------------------
 
 for(i in 1:no_species){
   # split genus/species names
@@ -189,11 +163,8 @@ species_genome <- data.frame(Japanese_name=japanese_name_vec,
           Contig_N50 = represent_contigN50_vec,
           Scaffold_N50 = represent_scaffoldN50_vec
           )
-```
 
-## Write a result file
-```{r message = FALSE, warning = FALSE, echo = TRUE}
+
+## ----message = FALSE, warning = FALSE, echo = TRUE------------------------------------------------
 write_csv(species_genome, "output.csv")
-```
-
 
