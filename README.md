@@ -8,6 +8,7 @@
 Scientific_name, Japanese_name
 Anguilla japonica Temminck & Schlegel 1846, ニホンウナギ
 Conger myriaster (Brevoort 1856), マアナゴ
+...
 ```
 
 
