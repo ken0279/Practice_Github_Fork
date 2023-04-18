@@ -1,6 +1,15 @@
 ## Githubの使い方演習のページ
 
+### 例題１：検索プログラムに用いる入力データのリストを共同開発者と分担して整備する
 
-### NCBIデータベースから対象種のゲノム情報の有無などの情報を収集
+#### 任意の生物種の種名リストを次の形式（ファイル名：hogehoge.list.csv）で、各自のforkレポジトリに追加してください。
 
-* [スクレイピング用Rコード:Rmd形式](Scraping_SpeciesGenomeInfo.Rmd)：
+```bash
+Scientific_name, Japanese_name
+Anguilla japonica Temminck & Schlegel 1846, ニホンウナギ
+Conger myriaster (Brevoort 1856), マアナゴ
+```
+
+
+
+
